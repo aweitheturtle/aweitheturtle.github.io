@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人學習歷程檔案 | 薇閣高中</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --navy: #1a2a6c;
+            --gold: #f1c40f;
+            --soft-white: #f8f9fa;
+            --medical-blue: #00cec9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "PingFang TC", "Heiti TC", sans-serif; }
+        body { background: var(--soft-white); color: #333; line-height: 1.7; }
+        
+        nav {
+            background: rgba(26, 42, 108, 0.98);
+            padding: 1rem 10%;
+            display: flex; justify-content: space-between; align-items: center;
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+        }
+        nav .logo { color: white; font-weight: bold; font-size: 1.2rem; }
+        nav ul { display: flex; list-style: none; }
+        nav ul li a { color: #ddd; text-decoration: none; margin-left: 20px; font-size: 0.9rem; transition: 0.3s; }
+        nav ul li a:hover { color: var(--gold); }
+
+        .hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: white; text-align: center;
+        }
+        .hero h1 { font-size: 2.8rem; margin-bottom: 10px; }
+
+        section { padding: 70px 10%; border-bottom: 1px solid #eee; }
+        .title-box { text-align: center; margin-bottom: 50px; }
+        .title-box h2 { font-size: 2rem; color: var(--navy); position: relative; display: inline-block; }
+        .title-box h2::after { content: ''; width: 40px; height: 3px; background: var(--gold); position: absolute; bottom: -10px; left: 30%; }
+
+        .flex-container { display: flex; gap: 40px; align-items: center; margin-bottom: 40px; }
+        .flex-reverse { flex-direction: row-reverse; }
+        .text-content { flex: 1.2; }
+        .image-placeholder { flex: 1; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 15px rgba(0,0,0,0.1); height: 260px; position: relative; background: #eee; }
+        .image-placeholder img { width: 100%; height: 100%; object-fit: cover; }
+        .img-label { position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.5); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; }
+
+        .toeic-bar {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #e0e0e0;
+        }
+        .toeic-score { font-size: 2.5rem; font-weight: bold; color: var(--navy); border-right: 2px solid var(--gold); padding-right: 30px; }
+        .toeic-desc { flex: 1; padding-left: 30px; }
+
+        .grid-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .small-card { background: white; padding: 25px; border-radius: 12px; border-left: 5px solid var(--navy); box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+
+        footer { background: var(--navy); color: white; text-align: center; padding: 30px; font-size: 0.9rem; }
+
+        @media (max-width: 900px) {
+            .flex-container, .flex-reverse { flex-direction: column; }
+            .grid-cards { grid-template-columns: 1fr; }
+            .toeic-bar { flex-direction: column; text-align: center; }
+            .toeic-score { border-right: none; border-bottom: 2px solid var(--gold); padding-right: 0; padding-bottom: 10px; margin-bottom: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">E-PORTFOLIO</div>
+        <ul>
+            <li><a href="#global">國際交流</a></li>
+            <li><a href="#lang">語言能力</a></li>
+            <li><a href="#bio">生醫探索</a></li>
+            <li><a href="#drama">藝術領導</a></li>
+            <li><a href="#officer">班級服務</a></li>
+            <li><a href="#twc">生命關懷</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>探索與實踐的成長軌跡</h1>
+        <p>薇閣高中 | 跨域學習歷程檔案</p>
+    </header>
+
+    <section id="global">
+        <div class="title-box"><h2>國際視野</h2></div>
+        <div class="flex-container">
+            <div class="text-content">
+                <h3>日本慶應志木高校交流</h3>
+                <p>代表學校與日本慶應志木高校進行深度交流。在過程中我主動與日本同儕探討文化議題，運用外語溝通建立友誼，並學習在多元背景下展現協作力。</p>
+            </div>
+            <div class="image-placeholder">
+                <img src="https://via.placeholder.com/600x400?text=Japan+Exchange+Photo" alt="交流照片">
+                <div class="img-label">建議：放慶應交流合議或參訪照</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="lang" style="background: #fdfdfd;">
+        <div class="title-box"><h2>語言檢定</h2></div>
+        <div class="toeic-bar">
+            <div class="toeic-score">980 <span style="font-size: 1rem;">/ 990</span></div>
+            <div class="toeic-desc">
+                <h4>TOEIC 聽力與閱讀測驗</h4>
+                <p>具備優異的英語邏輯與學術閱讀能力，能流暢使用英語進行學術研究、專題發表及國際社交互動。</p>
+            </div>
+                                <div class="image-placeholder">
+                <img src="https://via.placeholder.com/600x400?text=Japan+Exchange+Photo" alt="證書">
+                <div class="img-label">多益金色證書</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="bio">
+        <div class="title-box"><h2>生醫科技探索</h2></div>
+        
+        <div class="flex-container">
+            <div class="text-content">
+                <h3>臺灣大學：高中生微生物實驗技術研習</h3>
+                <p>在台大實驗室中，我精進了微生物培養、染色鑑定及無菌操作技術。透過親手實作，我學會了如何系統性地記錄觀測數據，並對微觀世界的生物多樣性有了深刻體認。</p>
+                <span style="color: #c0392b; font-weight: bold;">#實驗實作 #微生物學</span>
+            </div>
+            <div class="image-placeholder">
+                <img src="https://via.placeholder.com/600x400?text=NTU+Microbiology+Lab" alt="台大研習照片">
+                <div class="img-label">建議：放操作顯微鏡照片</div>
+            </div>
+        </div>
+
+        <div class="flex-container flex-reverse">
+            <div class="text-content">
+                <h3>陽明交通大學：生醫科技挑戰營</h3>
+                <p>了解現代科技與生醫領域的結合並認識醫學影像及醫學檢驗。</p>
+                <span style="color: #2980b9; font-weight: bold;">#生醫科技 #團隊挑戰</span>
+            </div>
+            <div class="image-placeholder">
+                <img src="https://via.placeholder.com/600x400?text=NYCU+Bio-Tech+Camp" alt="陽明交大照片">
+                <div class="img-label">建議：放結業證書或小組合照</div>
+            </div>
+        </div>
+
+        <div class="flex-container">
+            <div class="text-content">
+                <h3>臺北醫學大學：女性科學家研習</h3>
+                <p>透過參訪實驗室及與頂尖女科學家座談，深刻了解女性在科學領域的發展潛力與貢獻。</p>
+                <span style="color: #8e44ad; font-weight: bold;">#女性科學家 #醫學職涯</span>
+            </div>
+            <div class="image-placeholder">
+                <img src="https://via.placeholder.com/600x400?text=TMU+Female+Scientist" alt="北醫研習照片">
+                <div class="img-label">建議：放北醫校園或講座照片</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="drama" style="background: #f9f9f9;">
+        <div class="title-box"><h2>表演藝術與領導</h2></div>
+        <div class="flex-container">
+            <div class="text-content">
+                <h3>校內英文話劇：雙料大獎</h3>
+                <p>擔任<strong>導演</strong>與<strong>女主角</strong>。從劇本詮釋到舞台調度，我獲得了最佳女主角與最佳導演雙項肯定，展現了高壓下的情緒韌性與統籌力。</p>
+            </div>
+            <div class="image-placeholder">
+                <img src="https://via.placeholder.com/600x400?text=Drama+Performance+Photo" alt="話劇照片">
+                <div class="img-label">建議：放劇照或拿獎盃照</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="officer">
+        <div class="title-box"><h2>班級服務</h2></div>
+        <div class="grid-cards">
+            <div class="small-card">
+                <h3>外語股長</h3>
+                <p>協助學科事務傳達與檢定宣導，成為老師與同學間溝通的橋樑。</p>
+            </div>
+            <div class="small-card">
+                <h3>衛生股長</h3>
+                <p>規劃班級環境維護流程，培養高度的責任感與執行力。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="twc" style="background: #f0f4f8;">
+        <div class="title-box"><h2>社會參與：TWC 社團</h2></div>
+        <div class="flex-container flex-reverse">
+            <div class="text-content">
+                <h3>Together We Change</h3>
+                <p>關懷流浪動物：參與義賣並將所得全數捐予收容所以及在狗場進行打掃、餵食等志工活動。</p>
+            </div>
+            <div class="image-placeholder">
+                <img src="https://via.placeholder.com/600x400?text=Animal+Welfare+Photo" alt="社團照片">
+                <div class="img-label">建議：放社團活動照片</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 個人學習歷程檔案 | 薇閣高中學生作品集</p>
+    </footer>
+
+</body>
+</html>
