@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人學習歷程檔案 | 薇閣高中</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --navy: #1a2a6c;
+            --gold: #f1c40f;
+            --soft-white: #f8f9fa;
+            --medical-blue: #00cec9;
+            --accent-red: #c0392b;
+            --accent-blue: #2980b9;
+            --accent-purple: #8e44ad;
+        }
+
+        /* 基礎樣式與平滑滾動 */
+        html { scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif; }
+        body { background: var(--soft-white); color: #333; line-height: 1.8; overflow-x: hidden; }
+        
+        /* 導覽列優化 */
+        nav {
+            background: rgba(26, 42, 108, 0.98);
+            padding: 1rem 8%;
+            display: flex; justify-content: space-between; align-items: center;
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        nav .logo { color: white; font-weight: bold; font-size: 1.4rem; letter-spacing: 1px; }
+        nav ul { display: flex; list-style: none; }
+        nav ul li a { color: #ddd; text-decoration: none; margin-left: 25px; font-size: 0.95rem; transition: 0.3s; font-weight: 500; }
+        nav ul li a:hover { color: var(--gold); }
+
+        /* 英雄視覺區 */
+        .hero {
+            height: 60vh;
+            background: linear-gradient(135deg, #1a2a6c 0%, #233a8e 100%);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: white; text-align: center;
+            padding-top: 60px;
+        }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 15px; text-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .hero p { font-size: 1.3rem; letter-spacing: 2px; opacity: 0.9; }
+
+        /* 區塊通用樣式 */
+        section { padding: 90px 10%; border-bottom: 1px solid #eee; }
+        .title-box { text-align: center; margin-bottom: 60px; }
+        .title-box h2 { font-size: 2.2rem; color: var(--navy); position: relative; display: inline-block; padding-bottom: 15px; }
+        .title-box h2::after { content: ''; width: 60px; height: 4px; background: var(--gold); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
+
+        /* 佈局容器 */
+        .flex-container { display: flex; gap: 50px; align-items: center; margin-bottom: 60px; }
+        .flex-reverse { flex-direction: row-reverse; }
+        .text-content { flex: 1.3; }
+        .text-content h3 { font-size: 1.6rem; color: var(--navy); margin-bottom: 15px; }
+        .image-placeholder { 
+            flex: 1; border-radius: 16px; overflow: hidden; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15); height: 320px; 
+            position: relative; background: #ddd; transition: transform 0.4s ease;
+        }
+        .image-placeholder:hover { transform: translateY(-10px); }
+        .image-placeholder img { width: 100%; height: 100%; object-fit: cover; }
+        .img-label { position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.7); color: white; padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; backdrop-filter: blur(4px); z-index: 5; }
+
+        /* 雙圖排格排版 */
+        .dual-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .dual-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            background: white;
+            border: 1px solid #eee;
+            height: 350px; 
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        .dual-card:hover { transform: scale(1.02); }
+        
+        /* 預設圖片顯示方式 (證書等) */
+        .dual-card img { width: 100%; height: 100%; object-fit: contain; padding: 15px; }
+        
+        /* 狗場照片特別處理：保證全圖顯示不切頭腳 */
+        .dual-card.photo-contain img { 
+            object-fit: contain; 
+            background-color: #f9f9f9; 
+            padding: 5px;
+        }
+
+        /* 義賣照片特別處理：填滿方框（維持之前的美觀度） */
+        .dual-card.photo-cover img { 
+            object-fit: cover; 
+            padding: 0;
+            object-position: center;
+        }
+
+        /* 多益區塊 */
+        .toeic-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            border: 1px solid #eee;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .toeic-stats { text-align: center; min-width: 180px; }
+        .toeic-score { font-size: 3.5rem; font-weight: 800; color: var(--navy); line-height: 1; }
+        .toeic-label { color: var(--gold); font-weight: bold; letter-spacing: 1px; }
+        .toeic-info { flex: 1; }
+        .toeic-cert-img { 
+            width: 280px; height: 200px; border-radius: 8px; overflow: hidden; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); flex-shrink: 0;
+            background: #fff;
+            border: 1px solid #ddd;
+            position: relative;
+        }
+        .toeic-cert-img img { width: 100%; height: 100%; object-fit: contain; padding: 5px; }
+
+        /* 標籤樣式 */
+        .tag { display: inline-block; padding: 4px 15px; border-radius: 50px; font-size: 0.85rem; font-weight: bold; margin-top: 15px; margin-right: 10px; }
+        .tag-ntu { background: #fdf2f2; color: var(--accent-red); }
+        .tag-nycu { background: #eef6fc; color: var(--accent-blue); }
+        .tag-tmu { background: #f5eef8; color: var(--accent-purple); }
+
+        /* 幹部卡片 */
+        .grid-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .small-card { 
+            background: white; padding: 35px; border-radius: 18px; 
+            border-top: 6px solid var(--navy); box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+        .small-card:hover { transform: translateY(-5px); }
+        .small-card i { font-size: 2rem; color: var(--gold); margin-bottom: 20px; display: block; }
+        .small-card h3 { margin-bottom: 10px; color: var(--navy); }
+
+        /* 頁尾 */
+        footer { background: var(--navy); color: white; text-align: center; padding: 50px 10%; font-size: 0.95rem; }
+        footer p { opacity: 0.8; margin-bottom: 10px; }
+
+        /* 響應式 */
+        @media (max-width: 960px) {
+            .flex-container, .flex-reverse { flex-direction: column; text-align: center; }
+            .dual-grid { grid-template-columns: 1fr; }
+            .toeic-card { flex-direction: column; text-align: center; padding: 30px; }
+            .toeic-stats { min-width: auto; border-right: none; border-bottom: 2px solid var(--gold); padding-bottom: 20px; margin-bottom: 20px; }
+            .grid-cards { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+            .image-placeholder { width: 100%; height: 280px; }
+            .toeic-cert-img { width: 100%; height: auto; max-width: 100%; }
+            .dual-card { height: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">E-PORTFOLIO</div>
+        <ul>
+            <li><a href="#global">國際</a></li>
+            <li><a href="#lang">語言</a></li>
+            <li><a href="#bio">生醫</a></li>
+            <li><a href="#drama">藝術</a></li>
+            <li><a href="#officer">服務</a></li>
+            <li><a href="#twc">社團</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>探索與實踐的成長軌跡</h1>
+        <p>薇閣高中 | 跨域學習歷程檔案</p>
+    </header>
+
+    <!-- 1. 國際交流 -->
+    <section id="global">
+        <div class="title-box"><h2>國際視野</h2></div>
+        <div class="flex-container">
+            <div class="text-content">
+                <h3>日本慶應志木高校文化交流</h3>
+                <p>代表薇閣高中參與台日文化交流計畫。在深度互動中，不僅磨練了跨文化環境下的英語溝通實戰經驗，更建立起可貴的跨國友誼。</p>
+            </div>
+            <div class="image-placeholder">
+                <img src="https://github.com/aweitheturtle/aweitheturtle.github.io/blob/main/LINE_ALBUM_2024%20%F0%9F%87%B9%F0%9F%87%BC_260311_5.jpg?raw=true" alt="慶應交流照">
+                <div class="img-label">志木高校來台參訪故宮合照</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. 語言檢定 (TOEIC) -->
+    <section id="lang" style="background: #fff;">
+        <div class="title-box"><h2>語言能力</h2></div>
+        <div class="toeic-card">
+            <div class="toeic-stats">
+                <div class="toeic-score">980</div>
+                <div class="toeic-label">TOEIC GOLDEN</div>
+            </div>
+            <div class="toeic-info">
+                <h3>多益英語測驗 (聽力與閱讀)</h3>
+                <p>具備極佳的英語學術邏輯與閱讀力，能流暢地運用外語進行國際社交、專題研究與學術發表。這項優勢讓我能無礙接觸全球第一手的生醫研究文獻與科技新知。</p>
+            </div>
+            <div class="toeic-cert-img">
+                <img src="https://github.com/aweitheturtle/aweitheturtle.github.io/blob/main/2026_03_04%2001_08%20Office%20Lens.jpg?raw=true" alt="多益金色證書">
+                <div class="img-label">多益金色證書</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 生醫探索 -->
+    <section id="bio">
+        <div class="title-box"><h2>生醫科技探索</h2></div>
+        
+        <!-- 台大 -->
+        <div class="flex-container">
+            <div class="text-content">
+                <h3>臺灣大學：高中生微生物實驗研習</h3>
+                <p>在台大專業實驗室環境中，我精進了微生物培養、染色鑑定及無菌操作技術。透過親手實作，我學會了如何系統性地紀錄觀測數據。</p>
+                <span class="tag tag-ntu">#實驗實作</span> <span class="tag tag-ntu">#微生物學</span>
+            </div>
+            <div class="image-placeholder">
+                <img src="https://github.com/aweitheturtle/aweitheturtle.github.io/blob/main/298538.jpg?raw=true" alt="台大實作照">
+                <div class="img-label">調配不同濃度的菌液</div>
+            </div>
+        </div>
+
+        <!-- 陽明交大 -->
+        <div class="flex-container flex-reverse">
+            <div class="text-content">
+                <h3>陽明交通大學：生醫科技高中微課程</h3>
+                <p>透過營隊深入了解現代科技在醫療領域的多元應用。從醫學影像技術到臨床檢驗實務，我對生醫產業的跨領域整合有了全面認識。</p>
+                <span class="tag tag-nycu">#醫學影像</span> <span class="tag tag-nycu">#生醫應用</span>
+            </div>
+            <div class="image-placeholder">
+                <img src="https://github.com/aweitheturtle/aweitheturtle.github.io/blob/main/PXL_20230819_073928283.jpg?raw=true" alt="陽明交大照">
+                <div class="img-label">VR結合解剖學實作</div>
+            </div>
+        </div>
+
+        <!-- 北醫 -->
+        <div class="flex-container">
+            <div class="text-content">
+                <h3>臺北醫學大學：女性科學家研習</h3>
+                <p>透過參訪頂尖醫學實驗室及與女性科學家座談，激發了我探索醫學奧秘的使命感，並確立了未來投入科學領域的決心。</p>
+                <span class="tag tag-tmu">#女性科學家</span> <span class="tag tag-tmu">#職涯探索</span>
+            </div>
+            <div class="image-placeholder">
+                <img src="https://github.com/aweitheturtle/aweitheturtle.github.io/blob/main/298537.jpg?raw=true" alt="北醫研習照">
+                <div class="img-label">參與李秀敏博士專題講座</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 英文話劇 -->
+    <section id="drama" style="background: #fff;">
+        <div class="title-box"><h2>表演藝術與領導</h2></div>
+        <div class="text-content">
+            <h3>校內英文話劇：雙料大獎</h3>
+            <p>同時擔任導演與女主角。從劇本詮釋、舞台調度到角色演出，我成功整合團隊資源，最終獲得最佳女主角與最佳導演雙項肯定。</p>
+            
+            <div class="dual-grid">
+                <div class="dual-card">
+                    <img src="https://github.com/aweitheturtle/aweitheturtle.github.io/blob/main/2026_03_04%2000_54%20Office%20Lens.jpg?raw=true" alt="最佳女主角證書">
+                    <div class="img-label">最佳女主角獎狀</div>
+                </div>
+                <div class="dual-card">
+                    <img src="https://github.com/aweitheturtle/aweitheturtle.github.io/blob/main/297047.jpg?raw=true" alt="最佳導演證書">
+                    <div class="img-label">最佳導演獎獎狀</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 班級幹部 -->
+    <section id="officer">
+        <div class="title-box"><h2>班級服務紀錄</h2></div>
+        <div class="grid-cards">
+            <div class="small-card">
+                <i class="fas fa-language"></i>
+                <h3>外語股長</h3>
+                <p>協助學科事務傳達與英檢資訊宣導，成為老師與同儕間的重要溝通橋樑。</p>
+            </div>
+            <div class="small-card">
+                <i class="fas fa-broom"></i>
+                <h3>衛生股長</h3>
+                <p>規劃班級環境維護與打掃工作分配，培養出責任感與團隊執行力。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. TWC 社團 -->
+    <section id="twc" style="background: #f0f4f8;">
+        <div class="title-box"><h2>社會參與：TWC 社團</h2></div>
+        <div class="text-content">
+            <h3>Together We Change (生命關懷)</h3>
+            <p>致力於流浪動物關懷。我不僅積極參與義賣，更親赴狗場參與志工服務。在實際行動中，我學會以同理心去觀察世界。</p>
+            
+            <div class="dual-grid">
+                <!-- 狗場照片：保持 contain 以顯示掃地動作與頭部 -->
+                <div class="dual-card photo-contain">
+                    <img src="https://github.com/aweitheturtle/aweitheturtle.github.io/blob/main/298539.jpg?raw=true" alt="狗場服務照">
+                    <div class="img-label">狗場環境清掃服務</div>
+                </div>
+                <!-- 義賣照片：恢復為 cover，讓畫面充滿方框，不留白 -->
+                <div class="dual-card photo-cover">
+                    <img src="https://github.com/aweitheturtle/aweitheturtle.github.io/blob/main/LINE_ALBUM_%F0%9F%8E%84%E7%BE%A9%E8%B3%A3%E7%85%A7%E7%89%87%EF%BC%81_260406_1.jpg?raw=true" alt="義賣活動照">
+                    <div class="img-label">參與義賣</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Believe in the power of curiosity and empathy.</p>
+        <p>© 個人學習歷程檔案 | 薇閣高中學生作品集</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.flex-container, .small-card, .toeic-card, .dual-grid').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(40px)';
+            el.style.transition = 'all 0.8s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
